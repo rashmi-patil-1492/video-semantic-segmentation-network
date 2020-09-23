@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "video-semantic-segmentation-network"
+version = "1.0.0"
+description = ""
+authors = ["Rashmi Patil <patilrashmi1492@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.6.10"
+
+[tool.poetry.dev-dependencies]
+opencv-python = "4.4.0.42"
+tensorflow = "1.14"
+numpy = "^1.13.3"
+Pillow = "^7.2.0"
+pypng= "^0.0.20"
+matplotlib = "^3.3.0"
+scipy = "^1.5.2"
+imageio = "^2.9.0"
+jupyterlab = "^2.1.4"
+taskipy = "^1.2.1"
+
+[tool.taskipy.tasks]
+install_toc = "jupyter labextension install @jupyterlab/toc"
+install_jupyter_kernel = "python -m ipykernel install --user --name=video-semantic-segmentation-network"
+list_jupyter_kernels = "jupyter kernelspec list"
+uninstall_jupyter_kernel = "jupyter kernelspec uninstall video-semantic-segmentation-network"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
