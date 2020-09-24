@@ -233,7 +233,7 @@ def main():
             })
 
         for i in range(regions):
-            segment_output_tensor = sess.graph.get_tensor_by_name('import/activation_50/truediv:0')
+            segment_output_tensor = sess.graph.get_tensor_by_name('import/activation_49/truediv:0')
             segment_input_tensor = sess.graph.get_tensor_by_name('import/input_1:0')
 
             segment_output = sess.run(segment_output_tensor, {segment_input_tensor: segment_img_batches})
