@@ -1,0 +1,15 @@
+name: video-semantic-segmentation-network
+channels:
+  - defaults
+dependencies:
+  - python=3.6.10
+  - pip
+  - numpy
+  - Pillow
+  - scipy
+  - pip:
+    - opencv-python==4.4.0.42
+    - tensorflow==1.14
+    - pypng==0.0.20
+    - matplotlib==3.3.0
+    - imageio==2.9.0
