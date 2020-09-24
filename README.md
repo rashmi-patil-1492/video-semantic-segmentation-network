@@ -84,9 +84,9 @@ There are three models that are required to run the inference and all are tensor
 3. **decision_network_checkpoints** : [decision_network_checkpoints][]
 
 
-[resnet50_segnet_model]: https://drive.google.com/file/d/19yNs8osr9x1jTQWhy0MFkLIjQjkyEgeN/view?usp=sharing
-[dvs_net_flownets_checkpoints]: https://drive.google.com/file/d/1HkuF0LB105EdprTY-JDpJ7ott4OH-zSt/view?usp=sharing
-[decision_network_checkpoints]: https://drive.google.com/file/d/12wzNEj8cS3tWEO-RhsMCs55_RePiyA6S/view?usp=sharing
+[resnet50_segnet_model]: https://drive.google.com/file/d/1Eh6PZLuBkV_mzvM9p7i9jBiRGGN6VOz6/view?usp=sharing
+[dvs_net_flownets_checkpoints]: https://drive.google.com/file/d/10jo98ild8cU621Y8zroLZF4q0rC9K5q_/view?usp=sharing
+[decision_network_checkpoints]: https://drive.google.com/file/d/1TiqORzBZpgGYKIIrA5eSpYEFXWjvP4VJ/view?usp=sharing
 
 After downloading the compressed files, unzip them and copy them in to corresponding folders as following.
 
