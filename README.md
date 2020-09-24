@@ -192,7 +192,7 @@ To avoid saving predicted images set the --save_dir to none like the following.
 
 	
 	python inference_resnet_segnet.py \
-	  --num_steps 200 \
+	  --num_steps 6959 \
 	  --target 80.0 \
 	  --data_dir ./camvid_30_fps_test_only/ \
 	  --save_dir none
