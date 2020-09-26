@@ -5,13 +5,13 @@ Most parts of the code is taken and modified as required from different github p
 
 ## Installation
 
-This projects depends following main packages
+This projects depends on following tensorflow package
 
 1. tensorflow==1.14
 2. tensorflow-gpu==1.14 (if gpu is available)
 
 There are three different ways to setup the environment. **Choose one**. Ideally first and second are recommended. 
-All the setups are tested on mac os.
+All the setups are tested on Mac OS.
 
 1. poetry
 
@@ -59,7 +59,7 @@ if gpu is available on the machine then install the following
 3. Manual Setup
 
 
-This method can be used if this projects is run on google colab kind of environments where poetry and conda virtual environments are unavailable.
+This method can be used if this project is run on google colab where poetry and conda virtual environments are unavailable.
 
 Python verion: 3.6
 
@@ -128,12 +128,12 @@ and for decision_network_checkpoints,
 
 1. Data for training the baseline segmentation network that is resnet50_segnet model. 
 
-Download the dataset from [alexgkendell][]'s  gitbub tutorial. This dataset contains 701 annotated images (367: train, 101: val, 233: test). These images are single frame images and they are used to train segmentation network. More information is provided in the [Training](#baseline-segmentation-network-resnet50_segnet) section 
+Download the dataset from [alexgkendell][]'s  gitbub tutorial. This dataset contains 701 annotated images (367: train, 101: val, 233: test). These images are single frame images and they are used to train baseline segmentation network. More information is provided in the [Training](#baseline-segmentation-network-resnet50_segnet) section.
 
 [alexgkendell]: https://github.com/alexgkendall/SegNet-Tutorial/tree/master/CamVid
 
 
-2. Data for training the full network explained in two different steps in __training section__ required following dataset.
+2. Data for training the full network. Detail steps are explained in __training__ section.
 
 The dataset required for this is the same dataset as above but sampled at 30 frames per second. 30th frame is considered as current frame and 1st - 29th frame is considered as key frames. Annotation is provided for the current frame that is the 30th frame.
 
@@ -141,16 +141,16 @@ This dataset can be downloaded from here: [camvid_30_fps][]
 
 [camvid_30_fps]: https://drive.google.com/drive/folders/1wIzlVcRHj3qe9wkn6yCeJeBrmd8KFx8L?usp=sharing
 
-3. Data for evaluation or running the inference
+3. Data for evaluation or running the inference.
 
 If the dataset from point number 2 was downloaded then this step is not required. 
 However, for running inference only and getting the **evaluation results**, this test set needs to be downloaded. This is packaged seperately for convinience and can be downloaded from here: [camvid_30_fps_test_only][]
 
 [camvid_30_fps_test_only]: https://drive.google.com/drive/folders/1XXurb1amFvXeSLmKbpZvThhzE4mopY07?usp=sharing
 
-4. video input
+4. video input.
 
-videos from camvid dataset can be downloaded from. These can be used as input to the inference. More on how to process video inputs in the following sections
+Videos from camvid dataset can be downloaded directly from the camvid database website. More on how to process video inputs is explained in the following sections.
 1. seq01TP.avi : ftp://svr-ftp.eng.cam.ac.uk/pub/eccv/01TP_extract.avi
 2. 0005VD.MXF : ftp://svr-ftp.eng.cam.ac.uk/pub/eccv/0005VD.MXF
 
@@ -163,7 +163,7 @@ videos from camvid dataset can be downloaded from. These can be used as input to
 #### How to get evaluation results
 
 **Prerequisites**
-1. Download pretrained models as mentioned in the [models and checkpoints section](#models-and-checkpoints) and copy them over as specified
+1. Download pretrained models as mentioned in the [models and checkpoints section](#models-and-checkpoints) and copy them over as specified.
 2. Download camvid_30_fps_test_only dataset and copy it to ./camvid_30_fps_test_only/ or use the download path in the arguments
 
 **Balanced mode** with confidence score (target) set to 80.0. If the confidence score is close to 100.0 then it is **slow mode** and its more likely that segmentation path will be chosen most of the time and a decrease in the fps is seen. Similarly, if the confidence score is set to for eg: 50.0 that is close to 0 then it is **fast mode** and its more likely that flownet path will be chosen and an increase in fps is seen.
@@ -180,10 +180,12 @@ videos from camvid dataset can be downloaded from. These can be used as input to
 --data_dir is path to the download camvid test only dataset.
 --save_dir is path to save the predicted images. All images are png images and start with name 'mask'
 
-Following is one of the the predicted images  stored in the --save_dir. Corresponding ground truth image is on the right of the predicted image
+Following is one of the the predicted images  stored in the --save_dir.
 
 Predicted Image
 # ![predicted-image](readme_images/mask45-predicted.png) 
+
+below is the corresponding ground truth image.
 
 Ground Truth Image
 # ![gt-image](readme_images/mask45-gt.png)
@@ -211,8 +213,8 @@ Here is an example jupyter notebook to run the [evaluation]
 #### How to process a video
 
 **Prerequisites**
-1. Download pretrained models as mentioned in the [models and checkpoints section](#models-and-checkpoints) and copy them over as specified
-2. Download one of the sample video from the [datasets]($datasets) section point number 4 and copy it to project folder 
+1. Download pretrained models as mentioned in the [models and checkpoints section](#models-and-checkpoints) and copy them over as specified.
+2. Download one of the sample video from the [datasets]($datasets) section point number 4 and copy it to project folder.
 
 Run the following:
 
@@ -234,7 +236,7 @@ The output video is stored in ./video-ouput/
 This is a long video and ctrl-c in the middle of the process will still result in output video.
 
 
-Following is a snapshot from the one of the following output video. A little over 2 minutes long video can be viewed on 
+A little over 2 minutes long video can be viewed on 
 1. [youtube seq01TP.avi]
 2. [youtube 0005VD.MXF]
 3. [youtube colors seq01TP.avi] with segmentation colors
@@ -245,9 +247,11 @@ Following is a snapshot from the one of the following output video. A little ove
 [youtube colors seq01TP.avi]: https://youtu.be/6Wxl6m-W5pc
 [youtube colors 0005VD.MXF]: https://youtu.be/TPcPed14S9E
 
+Following is a snapshot image from one of the video.
+
 # ![video-output](readme_images/video-frame-with-distance-info.png)
 
-From the output we can see that **bicyclist** is 6.68 m away from the driver view point and two **car**'s are 8.00m and 7.65m away. 
+From the output we can see that **bicyclist** is 6.68m away from the driver view point and two **car**'s are 8.00m and 7.65m away. 
 
 **Note:** 
 1. The distance metric is enabled only for these labels ['pole', 'car', 'pedestrian', 'bicyclist']
@@ -268,15 +272,15 @@ There are 2 parts for the training.
 
 Baseline model used in experiments is an encoder-decoder network with resnet50 (pretrained with imagenet) as encoder and segnet as decoder. [resnet50](model/resnet50.py) and [segnet](model/segnet.py) are the encoder and decoder network. These files are written in keras and are place holders here. They are used to load the pretrained resnet50_segnet combined model and to convert keras model from hd5 format to tensorflow protobuf pb format. [convert_keras_to_tensorflow_pb.py](convert_keras_to_tensorflow_pb.py)
 
-Ideally training is performed on machines with GPU support and [resnet50_segnet_training][] a jupyter notebook can be used to train a new model. This notebook is used to generate a baseline model in our experiments and is run on google colab with GPU support.
+Ideally, training is performed on machines with GPU support and [resnet50_segnet_training][] is a jupyter notebook that can be used to train a new model. This notebook is used to generate a baseline model in our experiments and is run on google colab with GPU support.
 
 
 [resnet50_segnet_training]:https://colab.research.google.com/drive/1Rpkg_cBLc0VdIGvUZdWo3FsMHgXlVPdH?usp=sharing
 
 #### what to do with the baseline segmentation network model.
 
-After training a new model with the above jupyter notebook on google colab, the trained model is a keras supported model saved typically 'resnet50_segnet.h5'. This model file is in hd5 format and needs to be converted to protobuf format 'resnet50_segnet.pb'
-Do the following
+After training a new model with the above jupyter notebook on google colab, the trained model is a keras supported model saved typically as 'resnet50_segnet.h5'. This model file is in hd5 format and needs to be converted to protobuf format 'resnet50_segnet.pb'
+Download the model file and copy to the model directory and run the conversion script as following.
 
 	$ cp resnet50_segnet.h5 ./resnet50_segnet_model/resnet50_segnet.h5
 	$ python convert_keras_to_tensorflow_pb.py
@@ -340,7 +344,7 @@ This should store checkpoints in specified directory and the output will print t
 # ![decision-net-output](readme_images/decision-network-training.png)
 
 
-After generating features and training a new decision network in addition to creating a new baseline model. Steps in the inference can be run to see the prediction of new model
+After generating features and training a new decision network in addition to creating a new baseline model. Steps in the inference can be run to see the predictions of new model
 
 
 # References
