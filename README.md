@@ -204,7 +204,9 @@ The output looks like the following
 
 From the output we can see that that Average fps is 16.84 on 16 GB ram machine without GPU. The segmentation steps were 143 and flowsteps were 6815.
 
+Here is an example jupyter notebook to run the [evaluation]
 
+[evaluation]: https://colab.research.google.com/drive/1dvM-YhG8DSxR7B4ESaLFl-2dIPakbm6I?usp=sharing
 
 #### How to process a video
 
